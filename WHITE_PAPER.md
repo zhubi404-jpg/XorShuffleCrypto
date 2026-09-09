@@ -136,6 +136,42 @@ class CustomPRNG:
         pass
 ```
 
+**安全要求**：
+
+1. **种子敏感性**  
+   构造函数的 `seed` 参数必须完全决定生成器的初始状态。不同的种子输入应产生统计上独立的输出序列。
+
+2. **输出范围**  
+   `uniform(low, high)` 的返回值必须满足 `low <= value < high`。对于 `low` 和 `high` 均为整数的常见调用场景，返回值应覆盖整个区间，不应系统性偏向任一子区间。
+
+3. **周期长度**  
+   对于非加密类 PRNG，建议周期至少为 2^64，以避免在长明文（N > 2^32）场景下出现明显的排列周期性。
+
+4. **可复现性**  
+   在相同种子输入下，生成器必须产生完全相同的输出序列。这是协议一致性的基本要求——加密方和解密方必须生成相同的置换。
+
+**不保证声明**：
+
+- 本工具不验证自定义 PRNG 的统计质量或加密强度
+- 使用非加密安全的自定义 PRNG 可能导致置换可预测，从而降低整体安全性
+- 用户自行承担注册和使用自定义 PRNG 的风险
+
+**注册示例**：
+
+```python
+from core import register_prng
+
+class MyPRNG:
+    def __init__(self, seed: int):
+        self.state = seed
+    def uniform(self, low: int, high: int) -> float:
+        self.state = (self.state * 1103515245 + 12345) & 0xFFFFFFFF
+        return low + (self.state / 0x100000000) * (high - low)
+
+register_prng("MyPRNG", MyPRNG)
+```
+
+注册后，调用 `generate_offsets_from_seed(seed, length, rng_id="MyPRNG")` 即可使用。
 ---
 
 *本工具未经专业密码学审计，使用者应自行评估安全风险。*
