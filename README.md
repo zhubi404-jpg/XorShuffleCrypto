@@ -21,7 +21,7 @@
 
 ### 普通用户（直接运行）
 
-前往 [Releases](https://github.com/zhubi404-jpg/encrypt-tool/releases) 页面下载 `EncryptTool.exe`，双击即可运行，无需安装 Python。
+前往 [Releases](https://github.com/zhubi404-jpg/XorShuffleCrypto/releases) 页面下载 `EncryptTool.exe`，双击即可运行，无需安装 Python。
 
 ### Python 开发者（作为库集成）
 
@@ -41,7 +41,7 @@ plain = decrypt_with_offset(packet, "", "mykey", "utf-8")
 ### 从源码安装
 
 ```bash
-git clone https://github.com/zhubi404-jpg/encrypt-tool.git
+git clone https://github.com/zhubi404-jpg/XorShuffleCrypto.git
 cd encrypt-tool
 pip install -e .
 ```
