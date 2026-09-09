@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "encrypt-tool-zhubi404-jpg"
-version = "1.0.0"
-description = "Offset-based encryption tool with HKDF and multiple PRNGs"
+name = "XorShuffleCrypto-V2.0"
+version = "2.0.0"
+description = "基于 XOR 与随机置换的文本加密工具 v2.0，支持 AES-GCM 种子加密与会话盐隔离。"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -13,10 +13,12 @@ authors = [
     {name = "zhubi404-jpg", email = "323840632+zhubi404-jpg@users.noreply.github.com"}
 ]
 requires-python = ">=3.8"
-dependencies = []
+dependencies = [
+    "cryptography>=42.0.0"
+]
 
 [project.scripts]
-encrypt-tool = "gui:main"
+xor-shuffle-crypto-v2 = "gui:main"
 
 [tool.setuptools]
 py-modules = ["core", "gui"]
