@@ -21,12 +21,12 @@
 
 ### 普通用户（直接运行）
 
-前往 [Releases](https://github.com/你的用户名/encrypt-tool/releases) 页面下载 `EncryptTool.exe`，双击即可运行，无需安装 Python。
+前往 [Releases](https://github.com/zhubi404-jpg/encrypt-tool/releases) 页面下载 `EncryptTool.exe`，双击即可运行，无需安装 Python。
 
 ### Python 开发者（作为库集成）
 
 ```bash
-pip install encrypt-tool
+pip install encrypt-tool-zhubi404-jpg
 ```
 
 安装后即可在 Python 代码中导入使用：
