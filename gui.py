@@ -212,7 +212,7 @@ class OffsetEncryptApp:
             root_width = self.root.winfo_width()
             root_height = self.root.winfo_height()
 
-            # 创建彩蛋窗口
+            # 创建窗口
             popup = tk.Toplevel(self.root)
             popup.title("你确定？")
             popup.resizable(False, False)
